@@ -15,7 +15,7 @@ function MainForm({addTask}: Props) {
       console.log(value);
       addTask(value);
       inputRef.current?.blur(); // the opposite of focus
-    }}>
+          }}>
       <input 
         ref={inputRef}
         onChange={(e) => setValue(e.target.value)} 
