@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react'
 import './MainForm.css';
-import { ITask } from '../types/task.interface';
+// import { ITask } from '../types/task.interface';
 import { useDispatch } from 'react-redux';
-import { addTask, removeTask } from '../../store/tasks/tasksSlice';
+import { addTask } from '../../store/tasks/tasksSlice';
 
 
 function MainForm() {

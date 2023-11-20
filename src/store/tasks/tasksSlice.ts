@@ -27,8 +27,13 @@ export const tasksStore = createSlice({
       state.unshift(task)
     },
     removeTask: (state, { payload: task }) => {
-      console.log(123)
-      return state = state.filter(t => t.id === task.id)
+      return state.filter(t => t.id !== task.id)
+    },
+    doneToggle: (state, { payload: task }) => {
+      let finded = state.findIndex( t => t.id === task.id )
+      state[finded] = {...state[finded], done: !state[finded].done}
+      console.log(state);
+      return state 
     }
   },
 })
