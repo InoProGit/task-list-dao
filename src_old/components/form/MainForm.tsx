@@ -1,21 +1,19 @@
 import React, { useRef, useState } from 'react'
 import './MainForm.css';
-import { ITask } from '../types/task.interface';
-import { useDispatch } from 'react-redux';
-import { addTask, removeTask } from '../../store/tasks/tasksSlice';
 
+interface Props {
+  addTask: (taskName: string) => void
+}
 
-function MainForm() {
+function MainForm({addTask}: Props) {
   const [value, setValue] = useState('')
   const inputRef = useRef<HTMLInputElement>(null);
-  
-  const dispatch = useDispatch()
   
   return (
     <form className="main-form" onSubmit={(e) => {
       e.preventDefault();
       console.log(value);
-      dispatch(addTask({id: Date.now(), name: value, done: false }));
+      addTask(value);
       inputRef.current?.blur(); // the opposite of focus
           }}>
       <input 
