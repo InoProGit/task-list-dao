@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+// import React, { useState } from 'react'
 import './TaskForLoop.css'
 import { ITask } from '../types/task.interface'
 import { tasksStore } from '../../store/tasks/tasksSlice'
 import { useDispatch } from 'react-redux'
-import { useAppSelector, useAppDispatch } from '../../hooks'
+import { useAppSelector } from '../../hooks'
 
 interface Props {
   task: ITask
@@ -11,7 +11,7 @@ interface Props {
 
 function TaskForLoop({ task }: Props) {
   const tasksStorage = useAppSelector( state => state )
-  const [done, setDone] = useState(task.done);
+  // const [done, setDone] = useState(task.done);
   const dispatch = useDispatch()
   // console.log(tasksStorage);
   // useEffect(() => { console.log('render') })
