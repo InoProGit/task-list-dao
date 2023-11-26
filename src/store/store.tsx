@@ -1,9 +1,6 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
-// import { api } from './api/api'
+import { configureStore } from '@reduxjs/toolkit'
 import { tasksStore } from './tasks/tasksSlice'
 import { createLogger } from 'redux-logger'
-
-import { applyMiddleware, createStore } from 'redux';
 
 const logger = createLogger({
   collapsed: true

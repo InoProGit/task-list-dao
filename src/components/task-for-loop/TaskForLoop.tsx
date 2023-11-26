@@ -1,4 +1,3 @@
-// import React, { useState } from 'react'
 import './TaskForLoop.css'
 import { ITask } from '../types/task.interface'
 import { tasksStore } from '../../store/tasks/tasksSlice'
@@ -10,11 +9,8 @@ interface Props {
 }
 
 function TaskForLoop({ task }: Props) {
-  const tasksStorage = useAppSelector( state => state )
-  // const [done, setDone] = useState(task.done);
+  const tasksStorage = useAppSelector(state => state.tasks)
   const dispatch = useDispatch()
-  // console.log(tasksStorage);
-  // useEffect(() => { console.log('render') })
 
   return (
     <div className="task-wrap border-solid border-black border-2 p-1 m-2 text-white">

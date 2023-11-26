@@ -1,55 +1,55 @@
 import { createSlice } from '@reduxjs/toolkit'
-// import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../store'
 import { ITask } from '../../components/types/task.interface'
 
 import data from '../../tasks.json';
 
 
-// Define a type for the slice state
-// interface CounterState {
-//   value: number
-// }
+interface TasksState {
+  tasks: ITask[],
+  filterStatus: number
+}
 
-// Define the initial state using that type
-const initialState: ITask[] = [...data]
+const initialState: TasksState = {
+  tasks: [...data],
+  filterStatus: 101
+}
 
 export const tasksStore = createSlice({
   name: 'tasksStorage',
-  // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
     addTask: (state, { payload: task }) => {
       console.log('addTask reducer')
-      if (state.some(t => t.id === task.id))
+      if (state.tasks.some(t => t.id === task.id))
         return
 
-      state.unshift(task)
+      return {
+        tasks: [task, ...state.tasks],
+        filterStatus: initialState.filterStatus
+      }
     },
     removeTask: (state, { payload: task }) => {
-      return state.filter(t => t.id !== task.id)
+      state.tasks = state.tasks.filter(t => t.id !== task.id)
     },
     doneToggle: (state, { payload: task }) => {
-      let finded = state.findIndex( t => t.id === task.id )
-      state[finded] = {...state[finded], done: !state[finded].done}
+      let finded = state.tasks.findIndex(t => t.id === task.id)
+      state.tasks[finded] = { ...state.tasks[finded], done: !state.tasks[finded].done }
       console.log(state);
-      return state 
+      return state
+    },
+    changeFilterStatus: (state, { payload: arg }) => {
+      console.log('Click works'+ arg)
+      return {
+        ...state,
+        filterStatus: arg
+      }
     }
   },
 })
 
-// export const { actions, reducer } = tasksStore
+export const { addTask, removeTask, changeFilterStatus } = tasksStore.actions
 
-export const { addTask, removeTask } = tasksStore.actions
-
-// Other code such as selectors can use the imported `RootState` type
-export const selectTasks = (state: RootState) => tasksStore.getInitialState
+export const selectTasks = (state: RootState) => state.tasks
 
 export default tasksStore.reducer
-
-
-
-// Other code such as selectors can use the imported `RootState` type
-// export const selectCount = (state: RootState) => state.counter.value
-
-// export default tasksStore.reducer
