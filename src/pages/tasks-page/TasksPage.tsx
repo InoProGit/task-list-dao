@@ -4,7 +4,7 @@ import TaskForLoop from '../../components/task-for-loop/TaskForLoop'
 import { ITask } from '../../components/types/task.interface'
 import MainForm from "../../components/form/MainForm";
 import { useDispatch } from 'react-redux';
-import { changeFilterStatus, tasksStore } from '../../store/tasks/tasksSlice';
+import { changeFilterStatus } from '../../store/tasks/tasksSlice';
 import { useEffect, useState } from 'react';
 
 
@@ -12,11 +12,10 @@ function TasksPage() {
   const tasks = useAppSelector((state) => state.tasks)
   const filterStatus = useAppSelector((state) => state.filterStatus)
   const dispatch = useDispatch()
-  
+
   const [filteredTasks, setFilteredTasks] = useState(tasks)
 
   useEffect(() => {
-    console.log('Click works' + filterStatus)
     try {
       if (filterStatus === 101) {
         setFilteredTasks(tasks)
@@ -33,17 +32,22 @@ function TasksPage() {
 
   return (
     <div id="tasks-wrap">
-      <div onClick={() => dispatch(changeFilterStatus(102))}>Is Done</div>
-      <div onClick={() => dispatch(changeFilterStatus(103))}>UnDodne</div>
-      <div onClick={() => dispatch(changeFilterStatus(101))}>Reset</div>
-      <h1 className="text-center text-white border-solid border-black border-2 p-1">TasksPage</h1>
+      <h1 className="text-center text-white border-solid border-white border-2 p-1 m-2">TasksPage</h1>
+      <div className="filter-container text-white flex p-4 items-center">
+        <div className="filter-header text-lg mr-2">Filter tasks by:</div>
+        <div onClick={() => dispatch(changeFilterStatus(102))} className="mr-2 underline cursor-pointer">Is Done</div>
+        <div onClick={() => dispatch(changeFilterStatus(103))} className="mr-2 underline cursor-pointer">Undone</div>
+        <div onClick={() => dispatch(changeFilterStatus(101))} className="mr-2 underline cursor-pointer">Reset filter</div>
+      </div>
       <div className="add-task-wrap">
         <MainForm />
       </div>
-      <div className="tasks">
-        {filteredTasks.map((task: ITask) => {
-          return <TaskForLoop key={task.id} task={task} />;
-        })}
+      <div className="tasks-container flex">
+        <div className="tasks m-auto">
+          {filteredTasks.map((task: ITask) => {
+            return <TaskForLoop key={task.id} task={task} />;
+          })}
+        </div>
       </div>
     </div>
   )
