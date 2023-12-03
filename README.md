@@ -7,6 +7,20 @@ It`s a simple Task Manager application, created using:
 * Tailwind,
 * TypeScript.
 
+<p align="center">
+  <a href="https://imgur.com/UKrnG5N">
+    <img src="https://i.imgur.com/UKrnG5N.png" alt="Build Status">
+  </a>
+
+  <a href="https://imgur.com/tIDJpXA">
+    <img src="https://i.imgur.com/tIDJpXA.png" alt="XO code style">
+  </a>
+
+  <a href="https://imgur.com/uALSEIx">
+    <img src="https://i.imgur.com/uALSEIx.png" alt="styled with prettier">
+  </a>
+</p>
+
 ## Contribute
 
 To run it locally on your own computer:
