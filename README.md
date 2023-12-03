@@ -28,5 +28,5 @@ To run it locally on your own computer:
 * [Clone](https://help.github.com/articles/cloning-a-repository/) it to your
   local device
 * [Install](https://yarnpkg.com/en/docs/cli/install) the dependencies
-* [Run](https://github.com/bukinoshita/taskr/blob/master/package.json#L25) the
+* [Run](https://github.com/InoProGit/task-list-dao/blob/main/package.json#L25) the
   project
