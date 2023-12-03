@@ -8,7 +8,6 @@ import { StrictMode } from "react";
 function App() {
   return (
     <StrictMode>
-
       <div id="app">
         <Header/>
           <div id="wrapper"><MainRouter /></div>
