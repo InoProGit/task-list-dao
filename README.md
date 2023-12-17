@@ -30,3 +30,4 @@ To run it locally on your own computer:
 * [Install](https://yarnpkg.com/en/docs/cli/install) the dependencies
 * [Run](https://github.com/InoProGit/task-list-dao/blob/main/package.json#L25) the
   project
+Or visit - https://task-list-dao.vercel.app/
